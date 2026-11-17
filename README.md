@@ -1,3 +1,5 @@
+NUEVO REPOSITORIO RESPECTO A LA ENTREGA 1
+
 # Portfolio profesional - Dany Megías Maya
 
 Portfolio como desarrollador web junior (DAW) para la tarea UD7 (Entrega 2).
