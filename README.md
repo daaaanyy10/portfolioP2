@@ -44,7 +44,7 @@ Capturas guardadas en `docs/evidencias/`:
 
 ## Declaración de uso de IA
 He usado Claude de forma puntual en `js/main.js` para resolver una duda concreta sobre (cómo pasar los datos al modal / cómo validar el formulario).
-Lo utilicé porque no me salía y quería saberlo. El resto del código, los textos y las pruebas de calidad los he hecho yo.
+Lo utilicé porque no me salía y quería saberlo. El resto del código, los textos y las pruebas de calidad los he hecho yo. Y en algunos sitios puntuales del css, poco más.
 
 ## Estructura
 ```
