@@ -1,0 +1,1 @@
+Guarda aquí las capturas: lighthouse.png, wave.png, validador-html.png y validador-css.png

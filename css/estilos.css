@@ -1,0 +1,419 @@
+/* =====================================================
+   estilos.css - Portfolio de Dany Megías Maya
+   Va después de Bootstrap. Solo lo que Bootstrap no hace.
+   Tema: DEPORTE (césped, marcador y dorsales).
+   Todo se aplica con CLASES, ningún selector usa id.
+   ===================================================== */
+
+/* ---------- 1. VARIABLES DE MARCA (tema claro) ---------- */
+:root {
+  /* Verde "césped" como color principal de Bootstrap */
+  --bs-primary: #15803d;
+  --bs-primary-rgb: 21, 128, 61;
+  --bs-primary-bg-subtle: #dcfce7;
+  --bs-primary-border-subtle: #86efac;
+  --bs-primary-text-emphasis: #14532d;
+  --bs-link-color: #15803d;
+  --bs-link-color-rgb: 21, 128, 61;
+  --bs-link-hover-color: #166534;
+  --bs-link-hover-color-rgb: 22, 101, 52;
+  --bs-body-font-family: "Barlow", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+
+  /* Variables propias */
+  --fuente-titulos: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --color-estadio: #0b2a1a;      /* fondo muy oscuro: navbar y footer */
+  --color-cesped: #0f3d24;       /* franja clara del campo */
+  --color-cesped-2: #0c3320;     /* franja oscura del campo */
+  --color-lima: #c6f432;         /* color "fluorescente" de las equipaciones */
+  --color-acento: #15803d;       /* líneas, números y etiquetas */
+  --color-acento-contraste: #ffffff; /* texto que va encima del acento */
+  --color-foco: #15803d;
+  --color-foco-rgb: 21, 128, 61;
+  --color-borde-campo: #6c757d;
+}
+
+/* ---------- 2. TEMA OSCURO ---------- */
+/* En oscuro el acento pasa a lima para que el contraste sea >= 4,5:1.
+   También lo usan la portada, la barra y el footer, que siempre son oscuros. */
+[data-bs-theme="dark"] {
+  --bs-primary-bg-subtle: #0f3d24;
+  --bs-primary-border-subtle: #166534;
+  --bs-primary-text-emphasis: #86efac;
+  --bs-link-color: #4ade80;
+  --bs-link-color-rgb: 74, 222, 128;
+  --bs-link-hover-color: #86efac;
+  --bs-link-hover-color-rgb: 134, 239, 172;
+  --color-acento: #c6f432;
+  --color-acento-contraste: #0b2a1a;
+  --color-foco: #c6f432;
+  --color-foco-rgb: 198, 244, 50;
+  --color-borde-campo: #adb5bd;
+}
+
+/* ---------- 3. BOTONES (Bootstrap no usa --bs-primary en los botones) ---------- */
+.btn-primary {
+  --bs-btn-bg: #15803d;
+  --bs-btn-border-color: #15803d;
+  --bs-btn-hover-bg: #166534;
+  --bs-btn-hover-border-color: #14532d;
+  --bs-btn-active-bg: #14532d;
+  --bs-btn-active-border-color: #14532d;
+  --bs-btn-disabled-bg: #15803d;
+  --bs-btn-disabled-border-color: #15803d;
+  --bs-btn-focus-shadow-rgb: 21, 128, 61;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #15803d;
+  --bs-btn-border-color: #15803d;
+  --bs-btn-hover-bg: #15803d;
+  --bs-btn-hover-border-color: #15803d;
+  --bs-btn-active-bg: #14532d;
+  --bs-btn-active-border-color: #14532d;
+  --bs-btn-focus-shadow-rgb: 21, 128, 61;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* En oscuro el botón principal es lima con texto oscuro */
+[data-bs-theme="dark"] .btn-primary {
+  --bs-btn-color: #0b2a1a;
+  --bs-btn-bg: #c6f432;
+  --bs-btn-border-color: #c6f432;
+  --bs-btn-hover-color: #0b2a1a;
+  --bs-btn-hover-bg: #d9f96b;
+  --bs-btn-hover-border-color: #d9f96b;
+  --bs-btn-active-color: #0b2a1a;
+  --bs-btn-active-bg: #b4e01e;
+  --bs-btn-active-border-color: #b4e01e;
+  --bs-btn-disabled-color: #0b2a1a;
+  --bs-btn-disabled-bg: #c6f432;
+  --bs-btn-disabled-border-color: #c6f432;
+  --bs-btn-focus-shadow-rgb: 198, 244, 50;
+}
+
+[data-bs-theme="dark"] .btn-outline-primary {
+  --bs-btn-color: #4ade80;
+  --bs-btn-border-color: #4ade80;
+  --bs-btn-hover-color: #0b2a1a;
+  --bs-btn-hover-bg: #4ade80;
+  --bs-btn-hover-border-color: #4ade80;
+  --bs-btn-active-color: #0b2a1a;
+  --bs-btn-active-bg: #86efac;
+  --bs-btn-active-border-color: #86efac;
+  --bs-btn-focus-shadow-rgb: 74, 222, 128;
+}
+
+/* Botón del modo claro/oscuro (vive en la barra, que siempre es oscura) */
+.btn-tema {
+  color: var(--color-lima);
+  border: 2px solid var(--color-lima);
+  background: transparent;
+}
+
+.btn-tema:hover,
+.btn-tema:focus-visible {
+  color: var(--color-estadio);
+  background: var(--color-lima);
+  border-color: var(--color-lima);
+}
+
+/* ---------- 4. ACCESIBILIDAD ---------- */
+/* Foco visible en todos los elementos interactivos */
+a:focus-visible,
+.btn:focus-visible,
+.navbar-toggler:focus-visible,
+.accordion-button:focus-visible,
+.form-control:focus-visible,
+.btn-close:focus-visible {
+  outline: 3px solid var(--color-foco);
+  outline-offset: 2px;
+}
+
+/* Bordes de los campos con contraste >= 3:1 */
+.form-control {
+  border-color: var(--color-borde-campo);
+}
+
+.form-control:focus {
+  border-color: var(--color-foco);
+  box-shadow: 0 0 0 0.25rem rgba(var(--color-foco-rgb), 0.25);
+}
+
+/* Mensajes de error con buen contraste */
+.invalid-feedback {
+  color: #b02a37;
+}
+
+[data-bs-theme="dark"] .invalid-feedback {
+  color: #ea868f;
+}
+
+/* ---------- 5. TIPOGRAFÍA DEPORTIVA ---------- */
+/* Títulos estrechos, en cursiva y en mayúsculas, como un marcador */
+.titulo-deporte {
+  font-family: var(--fuente-titulos);
+  font-style: italic;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+/* Cada sección numerada como un dorsal: 01, 02, 03... */
+.cuerpo-deporte {
+  counter-reset: seccion;
+}
+
+.titulo-seccion {
+  counter-increment: seccion;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+.titulo-seccion::before {
+  content: counter(seccion, decimal-leading-zero);
+  content: counter(seccion, decimal-leading-zero) / "";
+  color: var(--color-acento);
+  font-size: 0.6em;
+  padding: 0.1em 0.5em;
+  border: 0.15rem solid currentColor;
+  transform: skewX(-12deg);
+}
+
+.titulo-seccion::after {
+  content: "";
+  flex: 1 1 auto;
+  max-width: 8rem;
+  height: 0.3rem;
+  background: var(--color-acento);
+  transform: skewX(-30deg);
+}
+
+/* ---------- 6. SECCIONES ---------- */
+/* Para que el navbar fijo no tape el título al hacer clic en un enlace */
+.seccion {
+  scroll-margin-top: 5rem;
+}
+
+/* ---------- 7. BARRA DE NAVEGACIÓN ---------- */
+.navbar.barra-navegacion {
+  --bs-navbar-color: rgba(255, 255, 255, 0.85);
+  --bs-navbar-hover-color: var(--color-lima);
+  --bs-navbar-active-color: var(--color-lima);
+  --bs-navbar-brand-hover-color: var(--color-lima);
+  background-color: var(--color-estadio);
+  border-bottom: 0.25rem solid var(--color-lima);
+}
+
+.marca {
+  font-family: var(--fuente-titulos);
+  font-style: italic;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.icono-marca {
+  color: var(--color-lima);
+}
+
+.menu-deporte .nav-link {
+  font-family: var(--fuente-titulos);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- 8. PORTADA ---------- */
+/* Campo de juego: franjas de césped, círculo central y línea de medio campo */
+.portada {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    linear-gradient(180deg, rgba(11, 42, 26, 0) 0%, rgba(11, 42, 26, 0.55) 100%),
+    repeating-linear-gradient(90deg, var(--color-cesped) 0 6rem, var(--color-cesped-2) 6rem 12rem);
+  border-bottom: 0.5rem solid var(--color-lima);
+}
+
+.portada::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -8rem;
+  width: 28rem;
+  height: 28rem;
+  border: 0.35rem solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.portada::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: calc(6rem - 0.175rem);
+  width: 0.35rem;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+/* El contenido va por encima de las líneas del campo */
+.portada-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+.titular {
+  font-family: var(--fuente-titulos);
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-lima);
+}
+
+/* Foto como una medalla */
+.avatar {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border: 0.4rem solid var(--color-lima);
+  box-shadow: 0 0 0 0.4rem rgba(198, 244, 50, 0.25), 0 1rem 2rem rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- 9. TARJETAS ---------- */
+/* Franja de color a la izquierda, como la banda de una camiseta */
+.tarjeta-deporte {
+  border: 0;
+  border-left: 0.35rem solid var(--color-acento);
+  border-radius: 0.25rem;
+  box-shadow: var(--bs-box-shadow-sm);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-deporte:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--bs-box-shadow);
+}
+
+/* ---------- 10. ETIQUETAS (badges) ---------- */
+/* Habilidades: paralelogramo relleno */
+.etiqueta {
+  margin-bottom: 0.25rem;
+  padding: 0.4em 1em;
+  font-family: var(--fuente-titulos);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-acento-contraste);
+  background-color: var(--color-acento);
+  border-radius: 0;
+  clip-path: polygon(0.5rem 0, 100% 0, calc(100% - 0.5rem) 100%, 0 100%);
+}
+
+/* Tecnologías de los proyectos: solo contorno */
+.etiqueta-suave {
+  margin-bottom: 0.25rem;
+  font-family: var(--fuente-titulos);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-acento);
+  background-color: transparent;
+  border: 1px solid currentColor;
+  border-radius: 0;
+}
+
+/* Viñeta en forma de paralelogramo */
+.lista-deporte li::before {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.6rem;
+  background: var(--color-acento);
+  transform: skewX(-20deg);
+}
+
+/* ---------- 11. PROYECTOS ---------- */
+.imagen-proyecto {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* ---------- 12. ACORDEÓN DE FORMACIÓN ---------- */
+.acordeon-deporte {
+  --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
+  --bs-accordion-active-color: var(--bs-primary-text-emphasis);
+  --bs-accordion-btn-focus-border-color: var(--color-foco);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--color-foco-rgb), 0.25);
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2314532d'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+}
+
+/* Bootstrap redefine el icono en oscuro sobre el propio ::after, por eso va más específico */
+[data-bs-theme="dark"] .acordeon-deporte .accordion-button::after {
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23c6f432'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+}
+
+.acordeon-deporte .accordion-button:not(.collapsed) {
+  font-weight: 700;
+}
+
+/* ---------- 13. MODAL ---------- */
+.modal-deporte .modal-content {
+  border: 0;
+  border-top: 0.5rem solid var(--color-acento);
+}
+
+/* ---------- 14. FOOTER ---------- */
+.pie-deporte {
+  background-color: var(--color-estadio);
+  color: #ffffff;
+  border-top: 0.5rem solid var(--color-lima);
+}
+
+/* ---------- 15. MOVIMIENTO REDUCIDO ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-deporte {
+    transition: none;
+  }
+
+  .tarjeta-deporte:hover {
+    transform: none;
+  }
+}
+
+/* ---------- 16. RESPONSIVE (mismos breakpoints que Bootstrap) ---------- */
+@media (min-width: 768px) {
+  .avatar {
+    width: 13rem;
+    height: 13rem;
+  }
+}
+
+/* Botones flotantes de subir/bajar: por encima del navbar fijo */
+.botones-flotantes {
+  z-index: 1030;
+}
+
+/* Desplazamiento suave (si el usuario no pide menos movimiento) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
