@@ -43,7 +43,8 @@ Capturas guardadas en `docs/evidencias/`:
 - Validador CSS del W3C: `docs/evidencias/validador-css.png`
 
 ## Declaración de uso de IA
-He utilizado Claude (Anthropic) como ayuda para generar la primera versión del código del portfolio. Después he revisado el código, he cambiado los textos y los datos por los míos, y he pasado yo mismo las pruebas de calidad (Lighthouse, WAVE y validadores del W3C).
+He usado Claude de forma puntual en `js/main.js` para resolver una duda concreta sobre (cómo pasar los datos al modal / cómo validar el formulario).
+Lo utilicé porque no me salía y quería saberlo. El resto del código, los textos y las pruebas de calidad los he hecho yo.
 
 ## Estructura
 ```
